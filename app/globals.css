@@ -2,25 +2,69 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a; /* slate-900 */
+  --primary-50: #eff6ff;   /* blue-50 */
+  --primary-100: #dbeafe;  /* blue-100 */
+  --primary-200: #bfdbfe;  /* blue-200 */
+  --primary-600: #2563eb;  /* blue-600 */
+  --primary-700: #1d4ed8;  /* blue-700 */
 }
+
+/* Optional local font: place file at public/fonts/Moontime.woff2 */
+@font-face {
+  font-family: "Moontime";
+  src: url("/fonts/Moontime.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Glacial Indifference (add file at public/fonts/GlacialIndifference-Regular.woff2) */
+@font-face {
+  font-family: "Glacial Indifference";
+  src: url("/fonts/GlacialIndifference-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility classes */
+.font-moontime { font-family: "Moontime", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
+.font-glacial { font-family: "Glacial Indifference", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary-50: var(--primary-50);
+  --color-primary-100: var(--primary-100);
+  --color-primary-200: var(--primary-200);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0b1220; /* deep blue */
+    --foreground: #e2e8f0; /* slate-200 */
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Utility helpers for blue/white theme */
+.theme-surface {
+  background: linear-gradient(to right, var(--primary-50), var(--primary-100));
+}
+.theme-card {
+  background-color: #ffffff;
+  border: 1px solid var(--primary-100);
+}
+.theme-accent {
+  color: var(--primary-600);
 }
