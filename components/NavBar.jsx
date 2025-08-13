@@ -13,14 +13,13 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen 
     { name: "Patient Resources", url: "#resources" },
     { name: "Testimonials", url: "#testimonials" },
     { name: "Contact Us", url: "#contact" },
-    { name: "Appointment Request", url: "#contact", isButton: true },
     { name: "SureSmile", url: "#services" },
   ]
 
-  const [activeTab, setActiveTab] = useState("Our Practice")
+  const [activeTab, setActiveTab] = useState("")
 
   return (
-    <nav className="hidden lg:flex items-center gap-4 text-sm md:text-base">
+    <nav className="hidden lg:flex items-center gap-1 text-sm md:text-base flex-shrink-0 ml-auto">
       {items.map((item) => {
         const isActive = activeTab === item.name
 
@@ -30,7 +29,7 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen 
             <div key={item.name} className="relative">
               <button
                 onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
-                className="relative flex items-center gap-1 text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-4 py-2 rounded-lg hover:bg-blue-50"
+                className="relative flex items-center gap-1 text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50"
               >
                 <span>About Us</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
@@ -101,7 +100,7 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen 
             key={item.name}
             href={item.url}
             onClick={() => setActiveTab(item.name)}
-            className="relative text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-4 py-2 rounded-lg hover:bg-blue-50 hover:scale-105"
+            className="relative text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50 hover:scale-105"
           >
             {item.name}
             {isActive && (

@@ -9,12 +9,12 @@ import { NavBar } from "@/components/NavBar";
 export default function Home() {
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-blue-100">
+      <header className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-blue-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 flex-shrink-0 min-w-0">
         <Image
                 src="/test.png"
                 alt="Crystal Cove Orthodontics logo"
@@ -23,7 +23,7 @@ export default function Home() {
                 className="h-14 md:h-16 lg:h-20 w-auto object-contain"
           priority
         />
-              <h1 className="text-2xl md:text-3xl font-normal italic text-blue-700 font-moontime">Dr. Russell Choy</h1>
+              <h1 className="text-lg md:text-xl font-medium text-gray-700 whitespace-nowrap" style={{fontFamily: 'Calibri, sans-serif'}}>Dr. Russell Choy</h1>
             </div>
 
             {/* Primary Nav with Animation */}
@@ -48,7 +48,13 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-16 bg-white">
+      <section id="services" className="py-16 bg-gradient-to-b from-white to-blue-50 relative">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100 rounded-full opacity-20"></div>
+          <div className="absolute top-1/2 -left-32 w-64 h-64 bg-blue-200 rounded-full opacity-15"></div>
+        </div>
+        <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Our Services</h2>
@@ -120,10 +126,19 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-blue-50">
+      <section id="about" className="py-16 bg-gradient-to-br from-blue-50 to-blue-100 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 border-2 border-blue-300 rounded-full"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-blue-200 rounded-full"></div>
+          <div className="absolute bottom-20 left-1/4 w-24 h-24 border border-blue-300 rounded-lg rotate-45"></div>
+          <div className="absolute bottom-32 right-1/3 w-12 h-12 bg-blue-300 rounded-full"></div>
+        </div>
+        <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -220,10 +235,17 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 bg-white">
+      <section id="contact" className="py-16 bg-gradient-to-b from-white to-blue-50 relative">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-0 left-1/4 w-32 h-32 bg-blue-100 rounded-full opacity-30"></div>
+          <div className="absolute bottom-0 right-1/4 w-40 h-40 bg-blue-200 rounded-full opacity-20"></div>
+        </div>
+        <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-4">Contact Us</h2>
@@ -327,10 +349,18 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-900 text-white py-12">
+      <footer className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-12 relative">
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-5 left-20 w-16 h-16 border border-white rounded-full"></div>
+          <div className="absolute top-20 right-32 w-12 h-12 bg-white rounded-full"></div>
+          <div className="absolute bottom-10 left-1/3 w-20 h-20 border border-white rounded-lg rotate-12"></div>
+        </div>
+        <div className="relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
@@ -381,6 +411,7 @@ export default function Home() {
               © 2024 Crystal Cove Orthodontics. All rights reserved.
             </p>
           </div>
+        </div>
         </div>
       </footer>
     </div>
