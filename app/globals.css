@@ -58,13 +58,6 @@ body {
 }
 
 /* Utility helpers for blue/white theme */
-.theme-surface {
-  background: linear-gradient(to right, var(--primary-50), var(--primary-100));
-}
-.theme-card {
-  background-color: #ffffff;
-  border: 1px solid var(--primary-100);
-}
-.theme-accent {
-  color: var(--primary-600);
-}
+.theme-surface { background: linear-gradient(to right, var(--primary-50), var(--primary-100)); }
+.theme-card { background-color: #ffffff; border: 1px solid var(--primary-100); }
+.theme-accent { color: var(--primary-600); }

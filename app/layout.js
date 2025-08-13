@@ -13,8 +13,10 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Crystal Cove Orthodontics - Beautiful Smiles Start Here",
-  description: "Experience exceptional orthodontic care at Crystal Cove Orthodontics. We offer traditional braces, clear aligners, and early treatment for patients of all ages in Newport Beach, CA.",
-  keywords: "orthodontics, braces, clear aligners, Newport Beach, Crystal Cove, orthodontist",
+  description:
+    "Experience exceptional orthodontic care at Crystal Cove Orthodontics. We offer traditional braces, clear aligners, and early treatment for patients of all ages in Newport Beach, CA.",
+  keywords:
+    "orthodontics, braces, clear aligners, Newport Beach, Crystal Cove, orthodontist",
 };
 
 export default function RootLayout({ children }) {

@@ -10,7 +10,7 @@ function Hero() {
           <div className="flex flex-col gap-3 md:gap-4">
             <div className="flex flex-col gap-3">
               <h1 className="font-glacial text-5xl md:text-7xl lg:text-8xl max-w-3xl tracking-tight text-left font-semibold text-blue-900">
-                Welcome to Crystal Cove Orthodontics
+                Welcome to Dr. Russell Choy Orthodontics
               </h1>
               <p className="text-lg md:text-xl leading-relaxed tracking-tight text-gray-700 max-w-xl text-left">
                 Friendly Staff. Beautiful Smiles. Welcoming Environment.
@@ -31,8 +31,8 @@ function Hero() {
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             <div className="relative aspect-square">
               <FallbackImage
-                src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop"
-                alt="Clear aligners"
+                src="/xray.jpeg"
+                alt="Dental x-ray review"
                 fill
                 sizes="(min-width:1024px) 25vw, 50vw"
                 className="object-cover rounded-md shadow-sm"
@@ -41,8 +41,8 @@ function Hero() {
             </div>
             <div className="relative row-span-2">
               <FallbackImage
-                src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1200&auto=format&fit=crop"
-                alt="Dental x-ray review"
+                src="/smiles.jpg"
+                alt="Beautiful healthy smile"
                 fill
                 sizes="(min-width:1024px) 25vw, 50vw"
                 className="object-cover rounded-md shadow-sm"
@@ -50,8 +50,8 @@ function Hero() {
             </div>
             <div className="relative aspect-square">
               <FallbackImage
-                src="https://images.unsplash.com/photo-1606813909355-34423f5b4b5e?q=80&w=1200&auto=format&fit=crop"
-                alt="Dental braces close-up"
+                src="/braces.jpg"
+                alt="Dental braces treatment"
                 fill
                 sizes="(min-width:1024px) 25vw, 50vw"
                 className="object-cover rounded-md shadow-sm"
