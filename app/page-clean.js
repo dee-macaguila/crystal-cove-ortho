@@ -90,69 +90,15 @@ export default function Home() {
 
       {/* About Crystal Cove Orthodontics Section */}
       <section className="py-16 bg-gradient-to-b from-blue-50 to-blue-50 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            
-            {/* Left Side - Image Grid */}
-            <div className="relative mt-16">
-              {/* Decorative circles */}
-              <div className="absolute -top-8 -right-8 w-24 h-24 bg-blue-400 rounded-full opacity-30"></div>
-              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-300 rounded-full"></div>
-              
-              {/* Image Grid */}
-              <div className="grid grid-cols-2 gap-6 relative z-10">
-                {/* Left - Modern Equipment (positioned higher) */}
-                <div className="bg-white rounded-xl overflow-hidden shadow-xl" style={{width: '280px', height: '480px'}}>
-                  <img 
-                    src="/Image-1.png" 
-                    alt="Modern orthodontic equipment" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                
-                {/* Right - Patient Care (positioned lower with offset) */}
-                <div className="bg-white rounded-xl overflow-hidden shadow-xl mt-12" style={{width: '280px', height: '480px'}}>
-                  <img 
-                    src="/Image-2.png" 
-                    alt="Orthodontic treatment in progress" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              
-              {/* Decorative dots pattern */}
-              <div className="absolute bottom-0 right-0 grid grid-cols-4 gap-2 opacity-40">
-                {[...Array(16)].map((_, i) => (
-                  <div key={i} className="w-2 h-2 bg-blue-300 rounded-full"></div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Right Side - Content */}
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">About Crystal Cove Orthodontics</h2>
-              <div className="text-lg text-slate-700 mb-8 leading-relaxed space-y-4">
-                <p>
-                  Our orthodontic practice, located in the city of <strong>Orland Park</strong>, is built upon the values of accommodation and friendliness. We take pride in offering affordable yet high-quality orthodontic services while ensuring convenience for our patients.
-                </p>
-                
-                <p>
-                  We prioritize creating a positive and welcoming environment for both our patients and employees. We are dedicated to delivering services that not only meet your expectations but surpass them, achieved by employing the finest materials and techniques.
-                </p>
-                
-                <p>
-                  Our services include <strong>traditional metal braces, clear ceramic braces, Invisalign clear aligners, SureSmile digital orthodontics, retainers, night guards, TMJ treatment, and early interceptive treatment</strong>. Situated conveniently in <strong>Orland Park</strong>, our location eliminates the need for extensive travel, allowing you to easily access our services.
-                </p>
-                
-                <p>
-                  We understand the demands of your busy schedule and strive to accommodate your orthodontic needs. Whether you require a routine orthodontic consultation or comprehensive orthodontic treatment, rest assured that we have all your orthodontic needs covered.
-                </p>
-              </div>
-            </div>
-            
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-blue-900 mb-6">About Crystal Cove Orthodontics</h2>
+            <p className="text-lg text-slate-700 mb-6 leading-relaxed">
+              At Crystal Cove Orthodontics, we believe everyone deserves a confident, beautiful smile. Our experienced team combines advanced technology with personalized care to deliver exceptional results for patients of all ages.
+            </p>
           </div>
           
-          <div className="mt-16 bg-white rounded-xl shadow-2xl p-8 border-2 border-blue-900" style={{boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3), 0 10px 20px -5px rgba(59, 130, 246, 0.15)'}}>
+          <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-100">
             <h3 className="text-2xl font-bold text-blue-900 mb-2">Dr. Russell Choy</h3>
             <p className="text-lg italic text-black mb-6">Your Orland Park Orthodontist</p>
             
@@ -190,7 +136,7 @@ export default function Home() {
           </div>
           
             {/* Right Side - Service Items */}
-              <div className="space-y-4">
+            <div className="space-y-4">
               <a href="/traditional-braces" className="block bg-white rounded-lg p-6 text-blue-800 hover:text-blue-900 hover:shadow-lg transition-all border border-blue-100 hover:border-blue-200">
                 <h3 className="text-xl font-semibold">Braces for Children and Adults</h3>
               </a>
@@ -338,7 +284,7 @@ export default function Home() {
               <div className="flex items-center gap-2 mb-4">
                 <Image src="/Test-new.png" alt="Crystal Cove Orthodontics" width={40} height={40} className="rounded-full" />
                 <h3 className="text-xl font-bold">Crystal Cove Orthodontics</h3>
-        </div>
+              </div>
               <p className="text-blue-100 mb-4">
                 Creating beautiful smiles and confident patients through exceptional orthodontic care.
               </p>
@@ -368,12 +314,12 @@ export default function Home() {
                 <p>123 Crystal Cove Drive<br />Newport Beach, CA 92660</p>
                 <p>Phone: (949) 555-0123</p>
                 <p>Email: info@crystalcoveortho.com</p>
+              </div>
             </div>
-          </div>
           </div>
           <div className="border-t border-blue-700 mt-8 pt-8 text-center text-blue-200">
             <p>&copy; 2024 Crystal Cove Orthodontics. All rights reserved.</p>
-        </div>
+          </div>
         </div>
       </footer>
     </div>
