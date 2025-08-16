@@ -12,7 +12,7 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
     { name: "Our Orthodontic Care", hasDropdown: true, dropdownType: "ortho" },
     { name: "Patient Resources", hasDropdown: true, dropdownType: "patient" },
     { name: "SureSmile", url: "#services" },
-    { name: "Contact Us", url: "#contact" },
+    { name: "Contact Us", url: "/contact" },
   ]
 
   const [activeTab, setActiveTab] = useState("")
