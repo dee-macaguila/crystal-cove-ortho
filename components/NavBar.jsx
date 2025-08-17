@@ -39,7 +39,7 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
               onMouseLeave={() => setDropdownOpen(false)}
             >
               <button
-                className="relative flex items-center gap-1 text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50"
+                className="relative flex items-center gap-1 text-blue-900 hover:text-blue-900 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50"
               >
                 <span>{item.name}</span>
                 <ChevronDown className={`w-3 h-3 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
@@ -69,19 +69,19 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
                       <>
                         <a
                           href="/meet-the-doctor"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Meet the Doctor
                         </a>
                         <a
                           href="/meet-the-staff"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Meet the Staff
                         </a>
                         <a
                           href="/blog"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Blog
                         </a>
@@ -91,37 +91,37 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
                       <>
                         <a
                           href="/invisalign"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Invisalign Braces
                         </a>
                         <a
                           href="/clear-braces"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Clear Braces
                         </a>
                         <a
                           href="/traditional-braces"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Traditional Braces
                         </a>
                         <a
                           href="/night-guards"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Night Guards
                         </a>
                         <a
                           href="/tmj"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           TMJ
                         </a>
                         <a
                           href="/before-after"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Before and After
                         </a>
@@ -131,25 +131,25 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
                       <>
                         <a
                           href="/new-patient"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           New Patient
                         </a>
                         <a
                           href="/educational-videos"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           Educational Videos
                         </a>
                         <a
                           href="/faqs"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           FAQs
                         </a>
                         <a
                           href="/new-patient-special-offer"
-                          className="block px-4 py-2 text-sm text-slate-700 hover:bg-blue-50 hover:text-blue-700 transition-colors"
+                          className="block px-4 py-2 text-sm text-blue-900 hover:bg-blue-50 hover:text-blue-900 transition-colors"
                         >
                           New Patient Special Offer
                         </a>
@@ -182,7 +182,7 @@ export function NavBar({ className, isAboutDropdownOpen, setIsAboutDropdownOpen,
             key={item.name}
             href={item.url}
             onClick={() => setActiveTab(item.name)}
-            className="relative text-slate-700 hover:text-blue-700 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50 hover:scale-105"
+            className="relative text-blue-900 hover:text-blue-900 transition-all duration-300 leading-tight px-2 py-2 rounded-lg hover:bg-blue-50 hover:scale-105"
           >
             {item.name}
             {isActive && (

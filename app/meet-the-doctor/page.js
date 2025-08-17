@@ -10,7 +10,7 @@ export default function MeetTheDoctorPage() {
       <section className="bg-gradient-to-r from-white via-blue-50 to-blue-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <h1 className="text-4xl md:text-6xl font-bold text-blue-900 tracking-tight mb-4">
-            Meet the Doctor
+            Meet Dr. Russell Choy
           </h1>
           <p className="text-xl text-slate-700 font-medium">
             Your Orland Park Orthodontist
