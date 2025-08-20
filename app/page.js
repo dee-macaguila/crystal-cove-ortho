@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { NavBar } from "@/components/NavBar";
 import { Testimonials } from "@/components/Testimonials";
+import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export default function Home() {
   const [expandedService, setExpandedService] = useState(null);
@@ -17,6 +18,13 @@ export default function Home() {
   const [isOrthoDropdownOpen, setIsOrthoDropdownOpen] = useState(false);
   const [isPatientResourcesDropdownOpen, setIsPatientResourcesDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Scroll animation hooks for different sections
+  const [aboutRef, isAboutVisible] = useScrollAnimation(0.2);
+  const [drChoyRef, isDrChoyVisible] = useScrollAnimation(0.3);
+  const [servicesRef, isServicesVisible] = useScrollAnimation(0.2);
+  const [testimonialsRef, isTestimonialsVisible] = useScrollAnimation(0.2);
+  const [footerRef, isFooterVisible] = useScrollAnimation(0.1);
 
   // Testimonials data
   const testimonials = [
@@ -46,12 +54,12 @@ export default function Home() {
     }
   ];
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white overflow-x-hidden">
       {/* Header */}
       <header className="bg-white/85 backdrop-blur-sm shadow-lg border-b border-blue-200 fixed top-0 left-0 right-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <a href="/" className="flex items-center gap-2 flex-shrink-0 min-w-0 hover:opacity-80 transition-opacity cursor-pointer">
+        <div className="w-full px-4 lg:px-8">
+          <div className="flex justify-between items-center py-4 w-full">
+            <a href="/" className="flex items-center gap-2 flex-shrink-0 min-w-0 hover:opacity-80 transition-opacity cursor-pointer -ml-2">
         <Image
                 src="/Test_LOGO_WEBDEV.png"
                 alt="Crystal Cove Orthodontics logo"
@@ -73,12 +81,25 @@ export default function Home() {
               setIsPatientResourcesDropdownOpen={setIsPatientResourcesDropdownOpen}
             />
 
+            {/* Mobile Call Now Button */}
+            <a
+              href="tel:+19495550123"
+              className="lg:hidden inline-flex items-center rounded-md bg-slate-800 text-white px-3 py-2 text-sm font-medium hover:bg-slate-900 transition-colors mr-2"
+            >
+              <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              Call
+            </a>
+
             {/* Mobile menu button */}
             <button 
-              className="lg:hidden text-slate-800 hover:text-slate-600 transition-colors"
+              className="lg:hidden inline-flex items-center text-slate-800 hover:text-slate-900 bg-white/80 border border-blue-200 rounded-md p-2 shadow-sm transition-colors"
+              aria-label="Open mobile menu"
+              aria-expanded={isMobileMenuOpen}
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -87,70 +108,93 @@ export default function Home() {
         
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
+          <div className="lg:hidden absolute left-0 right-0 top-full bg-white border-t border-gray-200 shadow-lg z-50">
             <div className="px-4 py-2 space-y-1">
-              <a href="/our-practice" className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+              <a href="/our-practice" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
                 Our Practice
               </a>
-              
-              {/* About Us Section */}
+              {/* About Us Section (collapsible) */}
               <div className="space-y-1">
-                <div className="px-3 py-2 text-blue-900 font-medium">About Us</div>
-                <a href="/meet-the-doctor" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Meet the Doctor
-                </a>
-                <a href="/meet-the-staff" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Meet the Staff
-                </a>
-                <a href="/blog" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Blog
-                </a>
+                <button 
+                  className="w-full flex items-center justify-between px-3 py-2 text-blue-900 font-medium rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsAboutDropdownOpen(!isAboutDropdownOpen)}
+                >
+                  <span>About Us</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isAboutDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${isAboutDropdownOpen ? 'max-h-56 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <a href="/meet-the-doctor" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Meet the Doctor
+                  </a>
+                  <a href="/meet-the-staff" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Meet the Staff
+                  </a>
+                  <a href="/blog" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Blog
+                  </a>
+                </div>
               </div>
               
-              {/* Orthodontic Care Section */}
+              {/* Orthodontic Care Section (collapsible) */}
               <div className="space-y-1">
-                <div className="px-3 py-2 text-blue-900 font-medium">Our Orthodontic Care</div>
-                <a href="/invisalign" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Invisalign Braces
-                </a>
-                <a href="/clear-braces" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Clear Braces
-                </a>
-                <a href="/traditional-braces" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Traditional Braces
-                </a>
-                <a href="/night-guards" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Night Guards
-                </a>
-                <a href="/tmj" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  TMJ
-                </a>
-                <a href="/before-after" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Before and After
-                </a>
+                <button 
+                  className="w-full flex items-center justify-between px-3 py-2 text-blue-900 font-medium rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsOrthoDropdownOpen(!isOrthoDropdownOpen)}
+                >
+                  <span>Our Orthodontic Care</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isOrthoDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${isOrthoDropdownOpen ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <a href="/invisalign" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Invisalign Braces
+                  </a>
+                  <a href="/clear-braces" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Clear Braces
+                  </a>
+                  <a href="/traditional-braces" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Traditional Braces
+                  </a>
+                  <a href="/night-guards" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Night Guards
+                  </a>
+                  <a href="/tmj" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    TMJ
+                  </a>
+                  <a href="/before-after" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Before and After
+                  </a>
+                </div>
               </div>
               
-              {/* Patient Resources Section */}
+              {/* Patient Resources Section (collapsible) */}
               <div className="space-y-1">
-                <div className="px-3 py-2 text-blue-900 font-medium">Patient Resources</div>
-                <a href="/new-patient" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  New Patient
-                </a>
-                <a href="/educational-videos" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  Educational Videos
-                </a>
-                <a href="/faqs" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  FAQs
-                </a>
-                <a href="/new-patient-special-offer" className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
-                  New Patient Special Offer
-                </a>
+                <button 
+                  className="w-full flex items-center justify-between px-3 py-2 text-blue-900 font-medium rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={() => setIsPatientResourcesDropdownOpen(!isPatientResourcesDropdownOpen)}
+                >
+                  <span>Patient Resources</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isPatientResourcesDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                <div className={`overflow-hidden transition-all duration-300 ${isPatientResourcesDropdownOpen ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'}`}>
+                  <a href="/new-patient" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    New Patient
+                  </a>
+                  <a href="/educational-videos" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    Educational Videos
+                  </a>
+                  <a href="/faqs" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    FAQs
+                  </a>
+                  <a href="/new-patient-special-offer" onClick={() => setIsMobileMenuOpen(false)} className="block px-6 py-2 text-blue-800 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+                    New Patient Special Offer
+                  </a>
+                </div>
               </div>
               
-              <a href="#services" className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+              <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
                 SureSmile
               </a>
-              <a href="/contact" className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
+              <a href="/contact" onClick={() => setIsMobileMenuOpen(false)} className="block px-3 py-2 text-blue-900 hover:text-blue-900 hover:bg-gray-50 rounded-md transition-colors">
                 Contact Us
               </a>
             </div>
@@ -159,12 +203,12 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/hero-image.png')"}}>
+      <section id="home" className="relative min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat" style={{backgroundImage: "url('/hero-image.png')"}}>
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40"></div>
         
         {/* Hero Content */}
-        <div className="relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto mt-20">
+        <div className="relative z-10 text-center text-white px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto mt-20">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-light italic mb-6 tracking-wide drop-shadow-2xl" style={{fontFamily: 'Georgia, serif', textShadow: '0 8px 16px rgba(0,0,0,0.6), 0 4px 8px rgba(0,0,0,0.4)'}}>
             Welcome to Crystal Cove Orthodontics
           </h1>
@@ -174,13 +218,7 @@ export default function Home() {
           <p className="text-lg md:text-xl mb-8 opacity-90 font-[family-name:var(--font-dancing-script)]">
             Your Orthodontist in Orland Park, IL - Dr. Russell Choy
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="bg-slate-800 hover:bg-slate-900 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors flex items-center gap-3">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              Call Now
-            </button>
+          <div className="flex justify-center items-center">
             <button className="bg-white/30 backdrop-blur-md hover:bg-white/40 text-white border border-white/50 px-8 py-4 rounded-lg text-lg font-semibold transition-all flex items-center gap-3 shadow-lg">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -191,7 +229,7 @@ export default function Home() {
         </div>
         
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-white animate-bounce">
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
@@ -199,12 +237,25 @@ export default function Home() {
       </section>
 
       {/* About Crystal Cove Orthodontics Section */}
-      <section className="py-16 bg-gradient-to-b from-blue-50 to-blue-50 relative">
+      <section 
+        ref={aboutRef}
+        className={`py-16 bg-gradient-to-b from-blue-50 to-blue-50 relative transition-all duration-600 ease-out ${
+          isAboutVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
             {/* Left Side - Image Grid */}
-            <div className="relative mt-16">
+            <div 
+                          className={`relative mt-16 transition-all duration-600 ease-out delay-200 ${
+              isAboutVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+            >
               {/* Decorative circles */}
               <div className="absolute -top-8 -right-8 w-24 h-24 bg-blue-400 rounded-full opacity-30"></div>
               <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-blue-300 rounded-full"></div>
@@ -239,7 +290,13 @@ export default function Home() {
             </div>
             
             {/* Right Side - Content */}
-            <div>
+            <div 
+                          className={`transition-all duration-600 ease-out delay-300 ${
+              isAboutVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`}
+            >
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">About Crystal Cove Orthodontics</h2>
               <div className="text-lg text-slate-700 mb-8 leading-relaxed space-y-4">
                 <p>
@@ -262,10 +319,24 @@ export default function Home() {
             
           </div>
           
-          <div className="mt-16 bg-white rounded-xl shadow-2xl p-8 border-2 border-blue-900" style={{boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3), 0 10px 20px -5px rgba(59, 130, 246, 0.15)'}}>
+          <div 
+            ref={drChoyRef}
+            className={`mt-16 bg-white rounded-xl shadow-2xl p-8 border-2 border-blue-900 transition-all duration-600 ease-out ${
+              isDrChoyVisible 
+                ? 'opacity-100 translate-y-0' 
+                : 'opacity-0 translate-y-8'
+            }`} 
+            style={{boxShadow: '0 25px 50px -12px rgba(37, 99, 235, 0.3), 0 10px 20px -5px rgba(59, 130, 246, 0.15)'}}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Left Side - Text Content */}
-              <div>
+              <div 
+                className={`transition-all duration-600 ease-out delay-200 ${
+                  isDrChoyVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <h3 className="text-2xl font-bold text-slate-800 mb-2">Dr. Russell Choy</h3>
                 <p className="text-lg italic text-black mb-6">Your Orland Park Orthodontist</p>
                 
@@ -283,7 +354,13 @@ export default function Home() {
               </div>
               
               {/* Right Side - Dr. Choy's Image */}
-              <div className="flex justify-center lg:justify-center">
+              <div 
+                className={`flex justify-center lg:justify-center transition-all duration-600 ease-out delay-400 ${
+                  isDrChoyVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                }`}
+              >
                 <div className="relative lg:ml-8">
                   <Image
                     src="/test_DR_CHOY.png"
@@ -301,7 +378,11 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-8 bg-gradient-to-b from-blue-50 to-blue-50 relative">
+      <section 
+        ref={servicesRef}
+        id="services" 
+        className={`py-8 bg-gradient-to-b from-blue-50 to-blue-50 relative transition-all duration-600 ease-out ${isServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-100 rounded-full opacity-20"></div>
@@ -309,111 +390,28 @@ export default function Home() {
         </div>
         <div className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Services Section - All in One Box */}
-            <div className="bg-gradient-to-br from-blue-900 to-slate-700 rounded-lg p-8 shadow-lg border border-blue-800">
-              {/* Title and Description */}
-              <div className="mb-8 text-center">
+            <div className={`bg-gradient-to-br from-blue-900 to-slate-700 rounded-lg p-8 shadow-lg border border-blue-800 transition-all duration-600 ease-out delay-100 ${isServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className={`mb-8 text-center transition-all duration-600 ease-out delay-200 ${isServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">Our Services</h2>
-                <p className="text-lg text-white leading-relaxed">
-                We offer comprehensive orthodontic solutions to create beautiful, healthy smiles for patients of all ages.
-              </p>
-            </div>
-            
-              {/* Services List */}
-              <div className="space-y-px">
-              
-              {/* Braces for Children and Adults */}
-              <div>
-                {/* White card */}
-                <button 
-                  onClick={() => toggleService('braces')}
-                  className="w-full text-left bg-white p-6 rounded-lg shadow-md border border-blue-100 hover:bg-blue-50 hover:text-slate-800 hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  <h3 className="text-lg font-semibold text-slate-800 flex items-center">
-                    <span className="mr-3 text-blue-900">▼</span>
-                    Braces for Children and Adults
-                  </h3>
-                </button>
-                
-                {/* Explanation box that expands and pushes content down */}
-                <div className={`bg-white text-black rounded-lg shadow-white shadow-lg overflow-hidden mx-4 transition-all duration-500 ease-in-out ${
-                  expandedService === 'braces' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`} style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)', fontFamily: 'Lato', fontStyle: 'italic', fontWeight: '400' }}>
-                  <div className="p-4">
-                    <p className="text-base leading-relaxed text-gray-700 font-bold">Traditional metal braces are the most effective and affordable option for correcting complex orthodontic issues. They provide precise control for achieving optimal results in both children and adults.</p>
-                  </div>
-                </div>
+                <p className="text-lg text-white leading-relaxed">We offer comprehensive orthodontic solutions to create beautiful, healthy smiles for patients of all ages.</p>
               </div>
-
-              {/* Invisalign */}
-              <div>
-                {/* White card */}
-                <button 
-                  onClick={() => toggleService('invisalign')}
-                  className="w-full text-left bg-white p-6 rounded-lg shadow-md border border-blue-100 hover:bg-blue-50 hover:text-slate-800 hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  <h3 className="text-lg font-semibold text-slate-800 flex items-center">
-                    <span className="mr-3 text-blue-900">▼</span>
-                    Invisalign
-                  </h3>
-                </button>
-                
-                {/* Explanation box that expands and pushes content down */}
-                <div className={`bg-white text-black rounded-lg shadow-white shadow-lg overflow-hidden mx-4 transition-all duration-500 ease-in-out ${
-                  expandedService === 'invisalign' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`} style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)', fontFamily: 'Lato', fontStyle: 'italic', fontWeight: '400' }}>
-                  <div className="p-4">
-                    <p className="text-base leading-relaxed text-gray-700 font-bold">Clear, removable aligners that straighten teeth discreetly without metal brackets. Perfect for adults and teens who want to maintain their confidence while achieving a perfect smile.</p>
-                  </div>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="bg-white rounded-lg p-6 shadow-md">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Braces for Children and Adults</h3>
+                  <p className="text-slate-700">Traditional metal braces are the most effective and affordable option for correcting complex orthodontic issues.</p>
                 </div>
-              </div>
-
-              {/* SureSmile */}
-              <div>
-                {/* White card */}
-                <button 
-                  onClick={() => toggleService('suresmile')}
-                  className="w-full text-left bg-white p-6 rounded-lg shadow-md border border-blue-100 hover:bg-blue-50 hover:text-slate-800 hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  <h3 className="text-lg font-semibold text-slate-800 flex items-center">
-                    <span className="mr-3 text-blue-900">▼</span>
-                    SureSmile
-                  </h3>
-                </button>
-                
-                {/* Explanation box that expands and pushes content down */}
-                <div className={`bg-white text-black rounded-lg shadow-white shadow-lg overflow-hidden mx-4 transition-all duration-500 ease-in-out ${
-                  expandedService === 'suresmile' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`} style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)', fontFamily: 'Lato', fontStyle: 'italic', fontWeight: '400' }}>
-                  <div className="p-4">
-                    <p className="text-base leading-relaxed text-gray-700 font-bold">Advanced digital orthodontics using 3D imaging and robotically bent wires for faster, more precise treatment. Reduces treatment time while delivering exceptional results with greater comfort.</p>
-                  </div>
+                <div className="bg-white rounded-lg p-6 shadow-md">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Invisalign</h3>
+                  <p className="text-slate-700">Clear, removable aligners that straighten teeth discreetly without metal brackets.</p>
                 </div>
-              </div>
-
-              {/* Removable Appliances */}
-              <div>
-                {/* White card */}
-                <button 
-                  onClick={() => toggleService('appliances')}
-                  className="w-full text-left bg-white p-6 rounded-lg shadow-md border border-blue-100 hover:bg-blue-50 hover:text-slate-800 hover:shadow-lg transition-all duration-300 cursor-pointer"
-                >
-                  <h3 className="text-lg font-semibold text-slate-800 flex items-center">
-                    <span className="mr-3 text-blue-900">▼</span>
-                    Removable Appliances
-                  </h3>
-                </button>
-                
-                {/* Explanation box that expands and pushes content down */}
-                <div className={`bg-white text-black rounded-lg shadow-white shadow-lg overflow-hidden mx-4 transition-all duration-500 ease-in-out ${
-                  expandedService === 'appliances' ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-                }`} style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)', fontFamily: 'Lato', fontStyle: 'italic', fontWeight: '400' }}>
-                  <div className="p-4">
-                    <p className="text-base leading-relaxed text-gray-700 font-bold">Custom retainers, night guards, and space maintainers designed to protect your investment and maintain your beautiful smile. Essential for long-term orthodontic success and oral health.</p>
-                  </div>
+                <div className="bg-white rounded-lg p-6 shadow-md">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">SureSmile</h3>
+                  <p className="text-slate-700">Advanced digital orthodontics using 3D imaging and robotically bent wires for precise treatment.</p>
                 </div>
-              </div>
-
+                <div className="bg-white rounded-lg p-6 shadow-md">
+                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Removable Appliances</h3>
+                  <p className="text-slate-700">Custom retainers, night guards, and space maintainers designed to protect your investment.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -421,34 +419,39 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-b from-blue-50 to-white relative">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 -left-32 w-64 h-64 bg-blue-100 rounded-full opacity-20"></div>
-          <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-blue-200 rounded-full opacity-15"></div>
-        </div>
+      <section 
+        ref={testimonialsRef}
+        className={`py-16 bg-white relative transition-all duration-600 ease-out ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div 
+              className={`text-center mb-12 transition-all duration-600 ease-out delay-200 ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
               <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">What Our Patients Say</h2>
-              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                 Discover why families throughout Orland Park trust Crystal Cove Orthodontics for their smile transformations.
               </p>
             </div>
-            <Testimonials testimonials={testimonials} />
+            <Testimonials testimonials={testimonials} isVisible={isTestimonialsVisible} />
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+      <footer 
+        ref={footerRef}
+        className={`bg-gradient-to-b from-slate-900 to-slate-800 text-white transition-all duration-600 ease-out ${isFooterVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div 
+            className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-600 ease-out delay-200 ${isFooterVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <Image src="/Test_LOGO_WEBDEV.png" alt="Crystal Cove Orthodontics" width={40} height={40} className="rounded-full" />
                 <h3 className="text-xl font-bold">Crystal Cove Orthodontics</h3>
-        </div>
+              </div>
               <p className="text-gray-700 mb-4">
                 Creating beautiful smiles and confident patients through exceptional orthodontic care.
               </p>
@@ -481,7 +484,9 @@ export default function Home() {
             </div>
           </div>
           </div>
-          <div className="border-t border-blue-700 mt-8 pt-8 text-center text-blue-200">
+          <div 
+            className={`border-t border-blue-700 mt-8 pt-8 text-center text-blue-200 transition-all duration-600 ease-out delay-300 ${isFooterVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          >
             <p>&copy; 2024 Crystal Cove Orthodontics. All rights reserved.</p>
         </div>
         </div>

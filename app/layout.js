@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${nunito.variable} ${greatVibes.variable} ${dancingScript.variable} antialiased`}
+        className={`${nunito.variable} ${greatVibes.variable} ${dancingScript.variable} antialiased overflow-x-hidden`}
         style={{ fontFamily: 'var(--font-nunito)' }}
         suppressHydrationWarning={true}
       >
