@@ -6,6 +6,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { NavBar } from "@/components/NavBar";
 import { Testimonials } from "@/components/Testimonials";
+import { FreeConsult } from "@/components/FreeConsult";
 import { useScrollAnimation } from "@/lib/useScrollAnimation";
 
 export default function Home() {
@@ -24,6 +25,7 @@ export default function Home() {
   const [drChoyRef, isDrChoyVisible] = useScrollAnimation(0.3);
   const [servicesRef, isServicesVisible] = useScrollAnimation(0.2);
   const [testimonialsRef, isTestimonialsVisible] = useScrollAnimation(0.2);
+  const [freeConsultRef, isFreeConsultVisible] = useScrollAnimation(0.2);
   const [footerRef, isFooterVisible] = useScrollAnimation(0.1);
 
   // Testimonials data
@@ -381,7 +383,7 @@ export default function Home() {
       <section 
         ref={servicesRef}
         id="services" 
-        className={`py-8 bg-gradient-to-b from-blue-50 to-blue-50 relative transition-all duration-600 ease-out ${isServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`py-8 bg-gradient-to-b from-blue-50 via-blue-50 to-white relative transition-all duration-600 ease-out ${isServicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         {/* Background decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -418,10 +420,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Testimonials and Free Consultation Section */}
       <section 
         ref={testimonialsRef}
-        className={`py-16 bg-white relative transition-all duration-600 ease-out ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className={`py-16 bg-gradient-to-b from-white via-white to-blue-50 relative transition-all duration-600 ease-out ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
       >
         <div className="relative">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -434,6 +436,27 @@ export default function Home() {
               </p>
             </div>
             <Testimonials testimonials={testimonials} isVisible={isTestimonialsVisible} />
+          </div>
+        </div>
+      </section>
+
+      {/* Free Consultation Section */}
+      <section 
+        id="free-consultation"
+        ref={freeConsultRef}
+        className={`py-16 bg-gradient-to-b from-blue-50 to-white relative transition-all duration-600 ease-out ${isFreeConsultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      >
+        <div className="relative">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div 
+              className={`text-center mb-12 transition-all duration-600 ease-out delay-200 ${isFreeConsultVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">Ready to Start Your Smile Journey?</h2>
+              <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+                Take the first step towards your perfect smile with a complimentary consultation.
+              </p>
+            </div>
+            <FreeConsult isVisible={isFreeConsultVisible} />
           </div>
         </div>
       </section>
@@ -452,7 +475,7 @@ export default function Home() {
                 <Image src="/Test_LOGO_WEBDEV.png" alt="Crystal Cove Orthodontics" width={40} height={40} className="rounded-full" />
                 <h3 className="text-xl font-bold">Crystal Cove Orthodontics</h3>
               </div>
-              <p className="text-gray-700 mb-4">
+              <p className="text-blue-200 mb-4">
                 Creating beautiful smiles and confident patients through exceptional orthodontic care.
               </p>
             </div>

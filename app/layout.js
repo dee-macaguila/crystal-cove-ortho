@@ -1,5 +1,6 @@
 import { Nunito, Great_Vibes, Dancing_Script } from "next/font/google";
 import "./globals.css";
+import { FloatingConsultButton } from "@/components/FloatingConsultButton";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
       >
         {children}
+        <FloatingConsultButton />
       </body>
     </html>
   );
