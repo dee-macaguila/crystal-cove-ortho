@@ -365,7 +365,7 @@ export default function Home() {
               >
                 <div className="relative lg:ml-8">
                   <Image
-                    src="/test_DR_CHOY.png"
+                    src="/DrChoy.png"
                     alt="Dr. Russell Choy"
                     width={300}
                     height={400}
@@ -398,21 +398,68 @@ export default function Home() {
                 <p className="text-lg text-white leading-relaxed">We offer comprehensive orthodontic solutions to create beautiful, healthy smiles for patients of all ages.</p>
               </div>
               <div className="grid grid-cols-1 gap-4">
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Braces for Children and Adults</h3>
-                  <p className="text-slate-700">Traditional metal braces are the most effective and affordable option for correcting complex orthodontic issues.</p>
+                {/* Braces for Children and Adults */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <button
+                    onClick={() => toggleService('braces')}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-lg font-semibold text-slate-800">Braces for Children and Adults</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-600 transition-transform ${expandedService === 'braces' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${expandedService === 'braces' ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-slate-700">Traditional metal braces are the most effective and affordable option for correcting complex orthodontic issues.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Invisalign</h3>
-                  <p className="text-slate-700">Clear, removable aligners that straighten teeth discreetly without metal brackets.</p>
+
+                {/* Invisalign */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <button
+                    onClick={() => toggleService('invisalign')}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-lg font-semibold text-slate-800">Invisalign</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-600 transition-transform ${expandedService === 'invisalign' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${expandedService === 'invisalign' ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-slate-700">Clear, removable aligners that straighten teeth discreetly without metal brackets.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-lg font-semibold text-slate-800 mb-2">SureSmile</h3>
-                  <p className="text-slate-700">Advanced digital orthodontics using 3D imaging and robotically bent wires for precise treatment.</p>
+
+                {/* SureSmile */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <button
+                    onClick={() => toggleService('suresmile')}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-lg font-semibold text-slate-800">SureSmile</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-600 transition-transform ${expandedService === 'suresmile' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${expandedService === 'suresmile' ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-slate-700">Advanced digital orthodontics using 3D imaging and robotically bent wires for precise treatment.</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="bg-white rounded-lg p-6 shadow-md">
-                  <h3 className="text-lg font-semibold text-slate-800 mb-2">Removable Appliances</h3>
-                  <p className="text-slate-700">Custom retainers, night guards, and space maintainers designed to protect your investment.</p>
+
+                {/* Removable Appliances */}
+                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                  <button
+                    onClick={() => toggleService('appliances')}
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                  >
+                    <h3 className="text-lg font-semibold text-slate-800">Removable Appliances</h3>
+                    <ChevronDown className={`w-5 h-5 text-slate-600 transition-transform ${expandedService === 'appliances' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`overflow-hidden transition-all duration-300 ${expandedService === 'appliances' ? 'max-h-32 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className="px-6 pb-6">
+                      <p className="text-slate-700">Custom retainers, night guards, and space maintainers designed to protect your investment.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -430,7 +477,7 @@ export default function Home() {
             <div 
               className={`text-center mb-12 transition-all duration-600 ease-out delay-200 ${isTestimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-slate-800 mb-6">What Our Patients Say</h2>
+              <h2 className="text-3xl lg:text-4xl italic text-slate-800 mb-6" style={{ fontFamily: 'Madelyn, Georgia, serif' }}>What Our Patients Say</h2>
               <p className="text-lg text-slate-600 max-w-3xl mx-auto">
                 Discover why families throughout Orland Park trust Crystal Cove Orthodontics for their smile transformations.
               </p>

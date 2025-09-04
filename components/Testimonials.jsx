@@ -50,7 +50,7 @@ export const Testimonials = ({ testimonials, isVisible = true }) => {
       }`}
     >
       {/* Carousel Container */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 to-white shadow-xl border border-blue-100">
+      <div className="relative overflow-hidden rounded-2xl bg-white shadow-xl border border-blue-100">
         {/* Testimonials Slides */}
         <div className="relative h-96 md:h-80">
           {testimonials.map((testimonial, index) => (
@@ -64,34 +64,34 @@ export const Testimonials = ({ testimonials, isVisible = true }) => {
                   : "opacity-0 translate-x-full"
               }`}
             >
-                             <div className="flex flex-col items-center justify-center h-full p-8 md:p-12 text-center">
-                 {/* Profile Picture (replacing quote icon) */}
-                 <div className="mb-6">
-                   <Image
-                     src={testimonial.img}
-                     width={80}
-                     height={80}
-                     alt={testimonial.name}
-                     className="rounded-full object-cover border-4 border-white shadow-lg"
-                   />
-                 </div>
+              <div className="flex flex-col items-center justify-center h-full p-8 md:p-12 text-center">
+                {/* Profile Picture (replacing quote icon) */}
+                <div className="mb-6">
+                  <Image
+                    src={testimonial.img}
+                    width={80}
+                    height={80}
+                    alt={testimonial.name}
+                    className="rounded-full object-cover border-4 border-white shadow-lg"
+                  />
+                </div>
 
-                 {/* Testimonial Content */}
-                 <div className="max-w-4xl mx-auto">
-                   <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-8 italic">
-                     "{testimonial.quote}"
-                   </p>
-                   
-                   {/* Author Info - Just name and role, no picture */}
-                   <div className="text-center">
-                     <h4 className="text-lg font-semibold text-slate-800">
-                       {testimonial.name}
-                     </h4>
-                     <p className="text-slate-600">
-                       {testimonial.role}
-                     </p>
-                   </div>
-                 </div>
+                {/* Testimonial Content */}
+                <div className="max-w-4xl mx-auto">
+                  <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-8 italic">
+                    "{testimonial.quote}"
+                  </p>
+                  
+                  {/* Author Info - Just name and role, no picture */}
+                  <div className="text-center">
+                    <h4 className="text-lg font-semibold text-slate-800">
+                      {testimonial.name}
+                    </h4>
+                    <p className="text-slate-600">
+                      {testimonial.role}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

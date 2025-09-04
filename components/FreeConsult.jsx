@@ -29,21 +29,22 @@ export const FreeConsult = ({ isVisible = true }) => {
 
   return (
     <div
+      id="free-consult"
       className={`mx-auto w-full max-w-6xl outline-none transition-all duration-600 ease-out delay-300 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
     >
-      <div className="bg-gradient-to-br from-blue-900 via-slate-800 to-blue-900 rounded-2xl shadow-2xl border border-blue-700 overflow-hidden">
+      <div className="bg-gradient-to-br from-blue-100 via-blue-50 to-white rounded-2xl shadow-2xl border border-blue-200 overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2">
           {/* Left Side - Content */}
-          <div className="p-8 lg:p-12 text-white">
+          <div className="p-8 lg:p-12 text-slate-800">
             <div className={`transition-all duration-600 ease-out delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}>
-                             <h3 className="text-3xl lg:text-4xl font-light italic mb-4 text-yellow-200 tracking-wide" style={{fontFamily: 'Georgia, serif'}}>
+                             <h3 className="text-3xl lg:text-4xl font-light italic mb-4 text-blue-800 tracking-wide" style={{fontFamily: 'Georgia, serif'}}>
                  Get Your Free Consultation
                </h3>
-               <p className="text-xl text-yellow-200 mb-8 leading-relaxed" style={{fontFamily: 'Georgia, serif'}}>
+               <p className="text-xl text-slate-700 mb-8 leading-relaxed" style={{fontFamily: 'Georgia, serif'}}>
                  Start your journey to a beautiful smile today! Schedule your complimentary consultation with Dr. Russell Choy and discover the perfect orthodontic treatment for you.
                </p>
               
@@ -54,7 +55,7 @@ export const FreeConsult = ({ isVisible = true }) => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                     </svg>
                   </div>
-                                     <span className="text-yellow-200 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Comprehensive oral examination</span>
+                                     <span className="text-slate-700 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Comprehensive oral examination</span>
                  </div>
                  <div className="flex items-center space-x-3">
                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -62,7 +63,7 @@ export const FreeConsult = ({ isVisible = true }) => {
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                      </svg>
                    </div>
-                   <span className="text-yellow-200 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Digital X-rays and imaging</span>
+                   <span className="text-slate-700 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Digital X-rays and imaging</span>
                  </div>
                  <div className="flex items-center space-x-3">
                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -70,7 +71,7 @@ export const FreeConsult = ({ isVisible = true }) => {
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                      </svg>
                    </div>
-                   <span className="text-yellow-200 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Personalized treatment plan</span>
+                   <span className="text-slate-700 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>Personalized treatment plan</span>
                  </div>
                  <div className="flex items-center space-x-3">
                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -78,22 +79,22 @@ export const FreeConsult = ({ isVisible = true }) => {
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                      </svg>
                    </div>
-                   <span className="text-yellow-200 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>No obligation - completely free!</span>
+                   <span className="text-slate-700 font-medium text-lg" style={{fontFamily: 'Georgia, serif'}}>No obligation - completely free!</span>
                 </div>
               </div>
 
                                               <div className="flex items-center space-x-6">
                    <div className="flex items-center space-x-2">
-                     <svg className="w-5 h-5 text-yellow-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                      </svg>
-                     <span className="text-yellow-200 font-semibold text-lg" style={{fontFamily: 'Georgia, serif'}}>(949) 555-0123</span>
+                     <span className="text-blue-600 font-semibold text-lg" style={{fontFamily: 'Georgia, serif'}}>(949) 555-0123</span>
                    </div>
                    <div className="flex items-center space-x-2">
-                     <svg className="w-5 h-5 text-yellow-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                     <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                      </svg>
-                     <span className="text-yellow-200 font-semibold text-lg" style={{fontFamily: 'Georgia, serif'}}>info@crystalcoveortho.com</span>
+                     <span className="text-blue-600 font-semibold text-lg" style={{fontFamily: 'Georgia, serif'}}>info@crystalcoveortho.com</span>
                    </div>
                  </div>
             </div>

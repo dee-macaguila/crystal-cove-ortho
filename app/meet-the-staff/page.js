@@ -1,18 +1,22 @@
-export const metadata = {
-  title: "Meet the Staff | Dr. Russell Choy Orthodontics",
-  description: "Meet our friendly and professional orthodontic team dedicated to providing excellent patient care.",
-};
+"use client";
+
+import { SiteHeader } from "@/components/SiteHeader";
 
 export default function MeetTheStaffPage() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Header Section */}
-      <section className="bg-gradient-to-r from-white via-blue-50 to-blue-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h1 className="text-4xl md:text-6xl font-bold text-blue-900 tracking-tight mb-4">
+    <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white overflow-x-hidden">
+      <SiteHeader />
+      <div className="h-20 lg:h-24" />
+
+      {/* Header Section - use hero background */}
+      <section className="relative w-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/hero-image.png')" }}>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h1 className="text-4xl md:text-6xl font-light italic text-white tracking-wide mb-4" style={{fontFamily: 'Georgia, serif'}}>
             Meet the Staff
           </h1>
-          <p className="text-xl text-slate-700 font-medium">
+          <p className="text-xl text-white/90 font-light">
             Our Dedicated Team of Orthodontic Professionals
           </p>
         </div>
@@ -142,18 +146,54 @@ export default function MeetTheStaffPage() {
             </div>
           </div>
 
-          {/* Back to Home Button */}
-          <div className="text-center">
-            <a 
-              href="/" 
-              className="inline-flex items-center px-8 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-blue-800 transition-colors"
-            >
-              ← Back to Home
-            </a>
-          </div>
-
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <img src="/Test_LOGO_WEBDEV.png" alt="Crystal Cove Orthodontics" width={40} height={40} className="rounded-full" />
+                <h3 className="text-xl font-bold">Crystal Cove Orthodontics</h3>
+              </div>
+              <p className="text-blue-200 mb-4">
+                Creating beautiful smiles and confident patients through exceptional orthodontic care.
+              </p>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="/our-practice" className="text-blue-200 hover:text-white transition-colors">Our Practice</a></li>
+                <li><a href="/meet-the-doctor" className="text-blue-200 hover:text-white transition-colors">Meet the Doctor</a></li>
+                <li><a href="/meet-the-staff" className="text-blue-200 hover:text-white transition-colors">Meet the Staff</a></li>
+                <li><a href="/contact" className="text-blue-200 hover:text-white transition-colors">Contact Us</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Services</h4>
+              <ul className="space-y-2">
+                <li><a href="/traditional-braces" className="text-blue-200 hover:text-white transition-colors">Traditional Braces</a></li>
+                <li><a href="/invisalign" className="text-blue-200 hover:text-white transition-colors">Invisalign</a></li>
+                <li><a href="/clear-braces" className="text-blue-200 hover:text-white transition-colors">Clear Braces</a></li>
+                <li><a href="/night-guards" className="text-blue-200 hover:text-white transition-colors">Night Guards</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+              <div className="text-blue-200 space-y-2">
+                <p>123 Crystal Cove Drive<br />Newport Beach, CA 92660</p>
+                <p>Phone: (949) 555-0123</p>
+                <p>Email: info@crystalcoveortho.com</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-blue-700 mt-8 pt-8 text-center text-blue-200">
+            <p>&copy; 2024 Crystal Cove Orthodontics. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }

@@ -1,69 +1,29 @@
 "use client";
 
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { useState } from "react";
-import { NavBar } from "@/components/NavBar";
+import { SiteHeader } from "@/components/SiteHeader";
 
 export default function ClearBracesPage() {
-  const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
-  const [isOrthoDropdownOpen, setIsOrthoDropdownOpen] = useState(false);
-  const [isPatientResourcesDropdownOpen, setIsPatientResourcesDropdownOpen] = useState(false);
-
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100">
-      {/* Header */}
-      <header className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-blue-200 relative z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <a href="/" className="flex items-center gap-2 flex-shrink-0 min-w-0 hover:opacity-80 transition-opacity cursor-pointer">
-              <Image
-                src="/Test-new.png"
-                alt="Crystal Cove Orthodontics logo"
-                width={200}
-                height={80}
-                className="h-14 md:h-16 lg:h-20 w-auto object-contain"
-                priority
-              />
-              <h1 className="text-xl md:text-2xl lg:text-3xl font-medium text-blue-900 whitespace-nowrap" style={{fontFamily: "'Baguet Script', 'Brush Script MT', cursive"}}>Dr. Russell Choy</h1>
-            </a>
+    <main className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-white overflow-x-hidden">
+      <SiteHeader />
+      <div className="h-20 lg:h-24" />
 
-            {/* Primary Nav with Animation */}
-            <NavBar 
-              isAboutDropdownOpen={isAboutDropdownOpen}
-              setIsAboutDropdownOpen={setIsAboutDropdownOpen}
-              isOrthoDropdownOpen={isOrthoDropdownOpen}
-              setIsOrthoDropdownOpen={setIsOrthoDropdownOpen}
-              isPatientResourcesDropdownOpen={isPatientResourcesDropdownOpen}
-              setIsPatientResourcesDropdownOpen={setIsPatientResourcesDropdownOpen}
-            />
-
-            {/* Mobile menu button (placeholder) */}
-            <button className="lg:hidden">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-          </div>
+      {/* Header Section - use hero background */}
+      <section className="relative w-full bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/hero-image.png')" }}>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h1 className="text-4xl md:text-6xl font-light italic text-white tracking-wide mb-4" style={{fontFamily: 'Georgia, serif'}}>
+            Clear Braces
+          </h1>
+          <p className="text-xl text-white/90 font-light">
+            Look your best while achieving the perfect smile with our translucent ceramic braces technology
+          </p>
         </div>
-      </header>
+      </section>
 
-      {/* Main Content */}
-      <main className="relative">
-        {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-r from-white via-blue-50 to-blue-100">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h1 className="text-4xl lg:text-5xl font-bold text-blue-900 mb-8">Clear Braces</h1>
-              <p className="text-xl text-slate-700 max-w-3xl mx-auto">
-                Look your best while achieving the perfect smile with our translucent ceramic braces technology.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Content Section */}
-        <section className="py-16 bg-white">
+      {/* Content Section */}
+      <section className="py-16 bg-white">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-y-8">
               
@@ -184,46 +144,52 @@ export default function ClearBracesPage() {
             </div>
           </div>
         </section>
-      </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-blue-900 to-blue-800 text-white py-12 relative">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-5 left-20 w-16 h-16 border border-white rounded-full"></div>
-          <div className="absolute top-20 right-32 w-12 h-12 bg-white rounded-full"></div>
-          <div className="absolute bottom-10 left-1/3 w-20 h-20 border border-white rounded-lg rotate-12"></div>
-        </div>
-        <div className="relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="col-span-1 md:col-span-2">
-                <h3 className="text-2xl font-bold text-white mb-4">Crystal Cove Orthodontics</h3>
-                <p className="text-blue-100 mb-4">
-                  Creating beautiful smiles and confident patients through exceptional orthodontic care.
-                </p>
+      <footer className="bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <img src="/Test_LOGO_WEBDEV.png" alt="Crystal Cove Orthodontics" width={40} height={40} className="rounded-full" />
+                <h3 className="text-xl font-bold">Crystal Cove Orthodontics</h3>
               </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
-                <p className="text-blue-200">Phone: 708-444-8341</p>
-                <p className="text-blue-200">Email: info@crystalcoveortho.com</p>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold mb-4">Services</h4>
-                <ul className="space-y-2">
-                  <li><a href="/invisalign" className="text-blue-200 hover:text-white transition-colors">Invisalign</a></li>
-                  <li><a href="/clear-braces" className="text-blue-200 hover:text-white transition-colors">Clear Braces</a></li>
-                  <li><a href="#" className="text-blue-200 hover:text-white transition-colors">Traditional Braces</a></li>
-                </ul>
-              </div>
-            </div>
-            <div className="border-t border-blue-800 mt-8 pt-8 text-center">
-              <p className="text-blue-200">
-                © 2024 Crystal Cove Orthodontics. All rights reserved.
+              <p className="text-blue-200 mb-4">
+                Creating beautiful smiles and confident patients through exceptional orthodontic care.
               </p>
             </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="/our-practice" className="text-blue-200 hover:text-white transition-colors">Our Practice</a></li>
+                <li><a href="/meet-the-doctor" className="text-blue-200 hover:text-white transition-colors">Meet the Doctor</a></li>
+                <li><a href="/meet-the-staff" className="text-blue-200 hover:text-white transition-colors">Meet the Staff</a></li>
+                <li><a href="/contact" className="text-blue-200 hover:text-white transition-colors">Contact Us</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Services</h4>
+              <ul className="space-y-2">
+                <li><a href="/traditional-braces" className="text-blue-200 hover:text-white transition-colors">Traditional Braces</a></li>
+                <li><a href="/invisalign" className="text-blue-200 hover:text-white transition-colors">Invisalign</a></li>
+                <li><a href="/clear-braces" className="text-blue-200 hover:text-white transition-colors">Clear Braces</a></li>
+                <li><a href="/night-guards" className="text-blue-200 hover:text-white transition-colors">Night Guards</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+              <div className="text-blue-200 space-y-2">
+                <p>123 Crystal Cove Drive<br />Newport Beach, CA 92660</p>
+                <p>Phone: (949) 555-0123</p>
+                <p>Email: info@crystalcoveortho.com</p>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-blue-700 mt-8 pt-8 text-center text-blue-200">
+            <p>&copy; 2024 Crystal Cove Orthodontics. All rights reserved.</p>
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

@@ -25,7 +25,7 @@ export default function BeforeAfterPage() {
                 className="h-14 md:h-16 lg:h-20 w-auto object-contain"
                 priority
               />
-              <h1 className="text-xl md:text-2xl lg:text-3xl font-medium text-blue-900 whitespace-nowrap" style={{fontFamily: "'Baguet Script', 'Brush Script MT', cursive"}}>Dr. Russell Choy</h1>
+              <h1 className="text-xl md:text-2xl lg:text-3xl font-medium text-blue-900 whitespace-nowrap font-[family-name:var(--font-great-vibes)]">Dr. Russell Choy</h1>
             </a>
 
             {/* Primary Nav with Animation */}
